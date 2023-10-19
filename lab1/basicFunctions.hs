@@ -1,4 +1,3 @@
-import Data.Char (toUpper)
 sqr :: Double -> Double
 sqr x = x * x
 
@@ -32,7 +31,7 @@ min3Int :: (Int,Int,Int) -> Int
 min3Int (a, b, c) = min2Int(a, min2Int(b,c))
 
 toUpperChar :: (Char) -> Char
-toUpperChar c = toUpper(c)
+toUpperChar c = if c >= 'a'  && c <= 'z' then toEnum (fromEnum c - 32) else c
 
 toUpperString::(String) -> String
 toUpperString str = map toUpperChar str
