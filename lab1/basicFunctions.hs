@@ -30,8 +30,11 @@ min2Int (a,b) = if a < b then a else b
 min3Int :: (Int,Int,Int) -> Int
 min3Int (a, b, c) = min2Int(a, min2Int(b,c))
 
-toUpperChar :: (Char) -> Char
-toUpperChar c = if c >= 'a'  && c <= 'z' then toEnum (fromEnum c - 32) else c
+toUpper :: (Char) -> Char
+toUpper c = if c >= 'a'  && c <= 'z' then toEnum (fromEnum c - 32) else c
 
 toUpperString::(String) -> String
-toUpperString str = map toUpperChar str
+toUpperString str = map toUpper str
+
+isDigit :: (Char) -> Bool
+isDigit c = (fromEnum c) >= 49 && (fromEnum c) <= 57
