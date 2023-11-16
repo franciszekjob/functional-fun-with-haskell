@@ -23,3 +23,5 @@ subtrNFrom5 n = 5 - n
 
 subtr5From_ :: Num a => a -> a
 subtr5From_ = subtract 5
+
+-- laziness
