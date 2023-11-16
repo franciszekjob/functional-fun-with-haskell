@@ -1,0 +1,136 @@
+Kartkówki zebrane z ró¿nych grup. We wszystkich grupach by³y podobne zadania. Zadania zebrane z forum i ze zbiorów w³asnych. Na ka¿dej kartkówce 3 zadania. Czas – oko³o 10 minut.
+
+Kartkówka 1:
+1. Co to jest :t. 
+2. U¿ywaj¹c guardianów zaklep signum. 
+3. Nie pamiêtam
+
+1. Jak w ghci sprawdzic inferencje typu ( po prostu :t)
+2. abc :: (a, a) -> a. Jakie s¹ argumenty i ich typy, jaki jest typ wyniku
+3. Napisaæ absInt z guardianem
+
+1. Co reprezentuje deklaracja ("f1 jest...")
+
+f1 :: (Integer, Char)->(Bool,Integer, Char)
+
+2. Przepisz poni¿szy kod u¿ywaj¹c if...then...else
+
+f2 _ = 1
+
+f2 1 = 3
+
+f2 2 = 10
+
+3. Podaj wynik   interferencji typu dla poni¿szych funkcji:
+
+f3 i = if 2>3 then True else False
+
+f4 (x,y) = x == y
+
+f5 (x,y) = if x/=0 then 1/x else 0
+
+Kartkowka 2:
+1. Napisaæ funkcjê f = 2*x przy u¿yciu sekcji
+2a. Napisaæ sygnaturê funkcji zipWith
+2b. Kwadraty parzystych liczb z przedzia³u [1..10] (list comprehension)
+3. Iloczyn elementow listy przy uzyciu rekursji ogonowej (akumulatora)
+
+1. Zrobiæ section dodaj¹cy +3
+2.a) napisaæ sygnature uncurry
+b) lista szeœcianów nieparzystych liczb [1..10] 
+3. selectEven :: Integer a => [a] -> [a] rekursja ogonowa
+
+1. Co poka¿e :t
+
+f1:: Num t=>t->t->(t,t)->t
+
+:t f1 1 2 --?
+
+
+2. Co zwróc¹ poni¿sze list comprehensions:
+
+[(3,j) |i<-[2,1],j<-[i..2]]
+
+[[i^2,j^2]|i<-[1..2],j<-[1..2],j>i]
+
+
+3. Uzupe³niæ definicjê i zrobiæ z tego rekurencjê ogonow¹
+sumAbs :: Num a=>[a]->a
+
+sumabs []=__
+
+sumAbs __=__ __ sumAbs __
+
+Kartkówka 3:
+1) Wyrazenie lambda. Funkcja dodajaca do Stringa "!"
+2) 
+fun = sum .
+map ( foldl1 ( \x y -> 2*x + y ) ) .
+map ( map digitToInt ) .
+filter ( all ( `elem` "01" ) ) .
+words
+
+digitToInt :: Char -> Int
+x `elem` ys = czy x nalezy do ys
+all p xs = czy px dla wszystkich x nalezacych do xs
+p :: a -> Bool
+a) wynik fun "To 100 zdanie nie10 ma 1010 11 sensu"
+b) typ fun, interpretacja slowna dzialania funkcji
+3) Przepisac przy uzyciu map, filter, dowolnego foldl
+sum [ x^3 | x <- [1..10], x `mod` 3 == 0 ]
+
+1) Funkcja mno¿¹ca liczbê przez 5 (wyra¿enia lambda)
+2) fun = sum.map((^2).Length).filter(isUpper.head).words
+"Ala posiaDa Kota a NIE psa" (czy coœ takiego)
+a) wynik funkcji
+b) typ i opis s³owny (trzeba napisaæ co przyjmuje i co zwraca)
+3) produce[x+2 | x<-[1..10], odd x] u¿ywaj¹c map, filter itp.
+
+1. Zapisz za pomoc¹ wyra¿eñ lambda
+
+f1 x = let y = sqrt x in 2*y^5*(y+1)
+
+
+2. co zwróc¹ funkcje (razem z kolejnymi etapami)
+
+foldr1 (+).map(*2).filter(>99)$[100,10,1000,500,90]
+
+foldr (++).filter(\x->length x<=3).map show $ [10^n|n<-1..5]
+
+
+3. napisz prodWith trzema systemami
+
+prodWith f...                              --rekurencja
+
+prodWith' f ... = product [...]            --list comprehensions
+
+prodWith'' f... = foldr1(\x acc->...)...   --foldr1
+
+Kartkówka 4:
+1) Struktura Person, firstName, lastName - String, age - Integer
+2) newtype Foo a = MkFoo { value :: a, name :: String }
+instance Show (Foo a) where
+show Foo{ v = value, n = name } = "Name: " ++ n ++ " with " ++ show v
+Znalezc 4 bledy
+3) data Tree a = Node [Tree a] a
+| Leaf a
+Zaimplementowac funkcje
+maxValue :: Ord a -> Tree a -> a
+
+Kartkówka 5:
+1)
+fun = do
+putStrLn "Podaj imie: "
+s <- geLine
+putStrln $ "Witaj " ++ s
+
+przepisac z uzyciem >>, >>=	
+
+2)
+foldr (+) 0 ((*)<$>ZipList[1,2,3]<*>((+1)ZipList[4,5,6]))
+do czego sie ewaluuje?
+
+3)
+data Tree a = Node a (Tree a) (Tree a)
+| Leaf
+napisac Functor i Foldable (kolejnosc pre-order)
