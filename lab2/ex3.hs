@@ -40,3 +40,13 @@ length'2 :: Num a => [a] -> a
 length'2 = loop 0
     where loop acc []      = acc
           loop acc (x:arr) = loop (1 + acc) arr
+
+isOdd :: (Ord a, Num a) => a -> Bool
+isOdd n | n <= 0    = False
+        | otherwise = isEven (n-1)
+
+isEven :: (Ord a, Num a) => a -> Bool
+isEven n | n < 0     = False
+         | n == 0    = True
+         | otherwise = isOdd (n-1)
+
